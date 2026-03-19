@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Pause, Play, Download, Redo, Undo } from "lucide-react";
-import { format } from "date-fns";
+// import { format } from "date-fns";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -18,7 +18,9 @@ type VoicePreviewPanelVoice = {
 };
 
 function formatTime(seconds: number): string {
-  return format(new Date(seconds * 1000), "mm:ss");
+  const mins = Math.floor(seconds / 60);
+  const secs = Math.floor(seconds % 60);
+  return `${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
 }
 
 export function VoicePreviewPanel({
@@ -69,6 +71,8 @@ export function VoicePreviewPanel({
     setTimeout(() => setIsDownloading(false), 1000);
   };
 
+  // console.log("VoicePreviewPanel render", { audioUrl, voice, text });
+  
   return (
     <div className="h-full gap-8 flex-col border-t hidden flex-1 lg:flex">
       {/* Header */}
