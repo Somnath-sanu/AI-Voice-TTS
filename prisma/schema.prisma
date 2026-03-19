@@ -30,7 +30,7 @@ enum VoiceCategory {
 model Voice {
   id String @id @default(cuid())
 
-  orgId String?
+  orgId String? // Optional as system voices has no orgId, it will present in all orgs as default
 
   name        String
   description String?
