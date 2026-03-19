@@ -2,6 +2,7 @@ import { auth } from "@clerk/nextjs/server";
 import { initTRPC, TRPCError } from "@trpc/server";
 import { cache } from "react";
 import superjson from "superjson";
+import * as Sentry from "@sentry/node";
 
 export const createTRPCContext = cache(async () => {});
 // Avoid exporting the entire t-object
@@ -14,13 +15,20 @@ const t = initTRPC.create({
    */
   transformer: superjson,
 });
+
+const sentryMiddleware = t.middleware(
+  Sentry.trpcMiddleware({
+    attachRpcInput: true,
+  }),
+);
+
 // Base router and procedure helpers
 export const createTRPCRouter = t.router;
 export const createCallerFactory = t.createCallerFactory;
-export const baseProcedure = t.procedure;
+export const baseProcedure = t.procedure.use(sentryMiddleware);
 
 // Authenticated procedure - calls auth() only when needed
-export const authProcedure = t.procedure.use(async ({ next }) => {
+export const authProcedure = baseProcedure.use(async ({ next }) => {
   const { userId } = await auth();
   if (!userId) {
     throw new TRPCError({ code: "UNAUTHORIZED" });
@@ -32,7 +40,7 @@ export const authProcedure = t.procedure.use(async ({ next }) => {
 });
 
 // Organization procedure - requires userId and orgId
-export const orgProcedure = t.procedure.use(async ({ next }) => {
+export const orgProcedure = baseProcedure.use(async ({ next }) => {
   const { userId, orgId } = await auth();
   if (!userId) {
     throw new TRPCError({ code: "UNAUTHORIZED" });
@@ -46,6 +54,6 @@ export const orgProcedure = t.procedure.use(async ({ next }) => {
   }
 
   return next({
-    ctx: { userId , orgId },
+    ctx: { userId, orgId },
   });
 });
