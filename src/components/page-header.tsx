@@ -15,13 +15,13 @@ export function PageHeader({
   return (
     <div
       className={cn(
-        "flex items-center justify-between border-b px-4 py-4",
+        "flex items-center justify-between border-b border-white/10 bg-background/70 px-4 py-4 backdrop-blur-xl",
         className,
       )}
     >
       <div className="flex items-center gap-2">
         <SidebarTrigger />
-        <h1 className="text-lg font-semibold tracking-tight">{title}</h1>
+        <h1 className="text-lg font-bold tracking-[-0.04em]">{title}</h1>
       </div>
       <div className="flex items-center gap-3">
         <Button variant="outline" size="sm" asChild>

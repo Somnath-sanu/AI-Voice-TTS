@@ -47,8 +47,8 @@ export function TextToSpeechView({
       }}
     >
       <TextToSpeechForm defaultValues={defaultValues}>
-        <div className="flex min-h-0 flex-1 overflow-hidden">
-          <div className="flex min-h-0 flex-col flex-1">
+        <div className="flex min-h-0 flex-1 gap-4 overflow-hidden p-3 lg:p-5">
+          <div className="clay-panel flex min-h-0 flex-1 flex-col overflow-hidden rounded-[2.25rem]">
             <TextInputPanel />
             <VoicePreviewPlaceholder />
           </div>

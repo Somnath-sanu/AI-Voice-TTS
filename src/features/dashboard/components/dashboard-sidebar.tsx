@@ -22,7 +22,6 @@ import {
   HomeIcon,
   LayoutGridIcon,
   SettingsIcon,
-  Volume2Icon,
   type LucideIcon,
 } from "lucide-react";
 import Image from "next/image";
@@ -66,7 +65,7 @@ function NavSection({ label, items, pathname }: NavSectionProps) {
                 }
                 onClick={item.onClick}
                 tooltip={item.title}
-                className="h-9 px-3 py-2 text-[13px] tracking-tight font-medium border border-transparent data-[active=true]:border-border data-[active=true]:shadow-[0px_1px_1px_0px_rgba(44,54,53,0.03),inset_0px_0px_0px_2px_white]"
+                className="h-10 px-3 py-2 text-[13px] border border-transparent hover:border-white/10 data-[active=true]:border-primary/40"
               >
                 {item.url ? (
                   <Link href={item.url}>
@@ -108,10 +107,10 @@ export function DashboardSidebar() {
       url: "/text-to-speech",
       icon: AudioLinesIcon,
     },
-    {
-      title: "Voice cloning",
-      icon: Volume2Icon,
-    },
+    // {
+    //   title: "Voice cloning",
+    //   icon: Volume2Icon,
+    // },
   ];
 
   const othersMenuItems: MenuItem[] = [
@@ -129,17 +128,19 @@ export function DashboardSidebar() {
 
   return (
     <Sidebar collapsible="icon">
-      <SidebarHeader className="flex flex-col gap-4 pt-4">
+      <SidebarHeader className="flex flex-col gap-5 p-4">
         <div className="flex items-center gap-2 pl-1 group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:pl-0">
-          <Image
-            src={"/logo.svg"}
-            alt="Resonance"
-            width={24}
-            height={24}
-            className="rounded-sm"
-          />
-          <span className="group-data-[collapsible=icon]:hidden text-lg font-semibold tracking-tighter text-foreground">
-            Resonance
+          <div className="relative grid size-10 group-data-[collapsible=icon]:size-8 group-data-[collapsible=icon]:p-4 place-items-center group-data-[collapsible=icon]:rounded-full rounded-2xl bg-primary text-primary-foreground shadow-[inset_-4px_-5px_10px_rgba(0,0,0,0.22),inset_4px_5px_12px_rgba(255,255,255,0.25),0_0_28px_rgba(200,255,90,0.22)]">
+            <Image
+              src={"/logo.svg"}
+              alt="Velora Voice"
+              width={24}
+              height={24}
+              className="rounded-sm brightness-0"
+            />
+          </div>
+          <span className="group-data-[collapsible=icon]:hidden text-lg font-bold tracking-[-0.04em] text-foreground">
+            Velora Voice
           </span>
           <SidebarTrigger className="ml-auto lg:hidden" />
         </div>
@@ -148,21 +149,21 @@ export function DashboardSidebar() {
             <OrganizationSwitcher
               hidePersonal
               fallback={
-                <Skeleton className="h-8.5 w-full group-data-[collapsible=icon]:size-8 rounded-md border bg-white" />
+                <Skeleton className="h-8.5 w-full group-data-[collapsible=icon]:size-8 rounded-2xl border border-border bg-white/10" />
               }
               appearance={{
                 elements: {
                   rootBox:
-                    "w-full! group-data-[collapsible=icon]:w-auto! group-data-[collapsible=icon]:flex! group-data-[collapsible=icon]:justify-center!",
+                    "w-full! group-data-[collapsible=icon]:w-auto! group-data-[collapsible=icon]:flex! group-data-[collapsible=icon]:justify-center! text-black!",
                   organizationSwitcherTrigger:
-                    "w-full! justify-between! bg-white! border! border-border! rounded-md! pl-1! pr-2! py-1! gap-3! group-data-[collapsible=icon]:w-auto! group-data-[collapsible=icon]:p-1! shadow-[0px_1px_1.5px_0px_rgba(44,54,53,0.03)]!",
-                  organizationPreview: "gap-2!",
-                  organizationPreviewAvatarBox: "size-6! rounded-sm!",
+                    "w-full! justify-between! bg-white/8! text-white! border! border-white/12! rounded-2xl! pl-1! pr-2! py-1! gap-3! group-data-[collapsible=icon]:w-auto! group-data-[collapsible=icon]:p-1! shadow-[inset_-4px_-5px_10px_rgba(0,0,0,0.22),inset_4px_5px_10px_rgba(255,255,255,0.06)]!",
+                  organizationPreview: "gap-2! ",
+                  organizationPreviewAvatarBox: "size-6! rounded-sm! text-black!",
                   organizationPreviewTextContainer:
-                    "text-xs! tracking-tight! font-medium! text-foreground! group-data-[collapsible=icon]:hidden!",
+                    "text-xs! tracking-tight! font-semibold! group-data-[collapsible=icon]:hidden!",
                   organizationPreviewMainIdentifier: "text-[13px]!",
                   organizationSwitcherTriggerIcon:
-                    "size-4! text-sidebar-foreground! group-data-[collapsible=icon]:hidden!",
+                    "size-4! text-sidebar-foreground! group-data-[collapsible=icon]:hidden! text-black!",
                 },
               }}
             />
@@ -170,7 +171,7 @@ export function DashboardSidebar() {
         </SidebarMenu>
       </SidebarHeader>
 
-      <div className="border-b border-dashed border-border" />
+      <div className="mx-4 border-b border-dashed border-white/10" />
       <SidebarContent>
         <NavSection items={mainMenuItems} pathname={pathname} />
         <NavSection
@@ -179,7 +180,7 @@ export function DashboardSidebar() {
           pathname={pathname}
         />
       </SidebarContent>
-      <div className="border-b border-dashed border-border" />
+      <div className="mx-4 border-b border-dashed border-white/10" />
       <SidebarFooter className="gap-3 py-3">
         {/* <UsageContainer /> */}
         <SidebarMenu>
@@ -187,17 +188,17 @@ export function DashboardSidebar() {
             <UserButton
               showName
               fallback={
-                <Skeleton className="h-8.5 w-full group-data-[collapsible=icon]:size-8 rounded-md border border-border bg-white" />
+                <Skeleton className="h-8.5 w-full group-data-[collapsible=icon]:size-8 rounded-2xl border border-border bg-white/10" />
               }
               appearance={{
                 elements: {
                   rootBox:
                     "w-full! group-data-[collapsible=icon]:w-auto! group-data-[collapsible=icon]:flex! group-data-[collapsible=icon]:justify-center!",
                   userButtonTrigger:
-                    "w-full! justify-between! bg-white! border! border-border! rounded-md! pl-1! pr-2! py-1! shadow-[0px_1px_1.5px_0px_rgba(44,54,53,0.03)]! group-data-[collapsible=icon]:w-auto! group-data-[collapsible=icon]:p-1! group-data-[collapsible=icon]:after:hidden! [--border:color-mix(in_srgb,transparent,var(--clerk-color-neutral,#000000)_15%)]!",
+                    "w-full! justify-between! bg-white/8! text-white! border! border-white/12! rounded-2xl! pl-1! pr-2! py-1! shadow-[inset_-4px_-5px_10px_rgba(0,0,0,0.22),inset_4px_5px_10px_rgba(255,255,255,0.06)]! group-data-[collapsible=icon]:w-auto! group-data-[collapsible=icon]:p-1! group-data-[collapsible=icon]:after:hidden! [--border:color-mix(in_srgb,transparent,var(--clerk-color-neutral,#ffffff)_15%)]!",
                   userButtonBox: "flex-row-reverse! gap-2!",
                   userButtonOuterIdentifier:
-                    "text-[13px]! tracking-tight! font-medium! text-foreground! pl-0! group-data-[collapsible=icon]:hidden!",
+                    "text-[13px]! tracking-tight! font-semibold! text-foreground! pl-0! group-data-[collapsible=icon]:hidden!",
                   userButtonAvatarBox: "size-6!",
                 },
               }}

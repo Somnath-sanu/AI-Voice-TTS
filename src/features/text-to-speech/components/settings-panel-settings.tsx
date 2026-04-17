@@ -15,7 +15,7 @@ export function SettingsPanelSettings() {
   return (
     <>
       {/* Voice Style Dropdown Section */}
-      <div className="border-b border-dashed p-4">
+      <div className="border-b border-dashed border-white/10 p-4">
         <VoiceSelector />
       </div>
 
@@ -43,7 +43,7 @@ export function SettingsPanelSettings() {
                     max={slider.max}
                     step={slider.step}
                     disabled={isSubmitting}
-                    className="**:data-[slot=slider-thumb]:size-3 **:data-[slot=slider-thumb]:bg-foreground **:data-[slot=slider-track]:h-1"
+                    className="**:data-[slot=slider-track]:h-2"
                   />
                 </Field>
               )}

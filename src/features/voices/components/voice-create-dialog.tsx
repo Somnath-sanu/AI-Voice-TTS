@@ -90,7 +90,7 @@ export function VoiceCreateDialog({
             Upload or record an audio sample to add a new voice to your library.
           </DialogDescription>
         </DialogHeader>
-        <VoiceCreateForm onError={handleError} />
+        <VoiceCreateForm onError={handleError} onOpenChange={onOpenChange}/>
       </DialogContent>
     </Dialog>
   );

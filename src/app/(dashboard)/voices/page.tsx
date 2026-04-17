@@ -5,7 +5,21 @@ import { Metadata } from "next";
 import type { SearchParams } from "nuqs/server";
 
 export const metadata: Metadata = {
-  title: "Voices",
+  title: "Voice Library",
+  description:
+    "Explore built-in and custom AI voices for expressive narration, ads, podcasts, games, and downloadable voiceovers in Velora Voice.",
+  keywords: [
+    "AI voice library",
+    "custom voices",
+    "voice cloning",
+    "voice preview",
+    "Velora Voice voices",
+  ],
+  openGraph: {
+    title: "Voice Library | Velora Voice",
+    description:
+      "Browse and preview expressive built-in and custom voices for AI voiceover projects.",
+  },
 };
 
 export default async function VoicesPage({

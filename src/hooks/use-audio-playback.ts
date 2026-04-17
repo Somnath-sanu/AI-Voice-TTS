@@ -29,6 +29,9 @@ export function useAudioPlayback(src: string | File | null) {
         () => setIsLoading(false),
         { once: true },
       );
+      audioRef.current.addEventListener("error" , () => {
+        setIsLoading(false);
+      })
     }
 
     if (isPlaying) {
