@@ -6,10 +6,10 @@ import { QuickActionsPanel } from "../components/quick-actions-panel";
 
 export function DashboardView() {
   return (
-    <div className="relative">
+    <div className="relative min-h-full">
       <PageHeader title="Dashboard" className="lg:hidden" />
       <HeroPattern />
-      <div className="relative space-y-8 p-4 lg:p-16">
+      <div className="relative space-y-8 p-4 lg:p-10 xl:p-14">
         <DashboardHeader />
         <TextInputPanel />
         <QuickActionsPanel />

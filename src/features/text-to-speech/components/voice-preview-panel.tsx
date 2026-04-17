@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Pause, Play, Download, Redo, Undo } from "lucide-react";
+// import Image from "next/image";
 // import { format } from "date-fns";
 
 import { Badge } from "@/components/ui/badge";
@@ -74,11 +75,23 @@ export function VoicePreviewPanel({
   // console.log("VoicePreviewPanel render", { audioUrl, voice, text });
   
   return (
-    <div className="h-full gap-8 flex-col border-t hidden flex-1 lg:flex">
-      {/* Header */}
-      <div className="p-6 pb-0">
-        <h3 className="font-semibold text-foreground">Voice preview</h3>
-      </div>
+    <div className="relative hidden h-50 flex-1 flex-col gap-4 border-t border-white/10 lg:flex overflow-y-auto no-scrollbar">
+      <div className="absolute -left-16 top-16 size-64 rounded-full bg-accent/10 blur-3xl" />
+      {/* <Image
+        src="/assets/clay/file-clay.svg"
+        alt=""
+        width={50}
+        height={100}
+        className="pointer-events-none absolute right-8 top-6 opacity-70 drop-shadow-[0_24px_32px_rgba(0,0,0,0.36)]"
+      /> */}
+      {/* <div className="relative p-6 pb-0">
+        <p className="text-xs font-semibold uppercase tracking-[0.28em] text-primary">
+          Download ready
+        </p>
+        <h3 className="text-2xl font-bold tracking-[-0.05em] text-foreground">
+          Voice preview
+        </h3>
+      </div> */}
 
       {/* Content */}
       <div className="relative flex flex-1 items-center justify-center">
@@ -96,14 +109,14 @@ export function VoicePreviewPanel({
         <div
           ref={containerRef}
           className={cn(
-            "w-full cursor-pointer transition-opacity duration-200",
+            "w-full cursor-pointer px-8 transition-opacity duration-200",
             !isReady && "opacity-0",
           )}
         />
       </div>
       {/* Time display */}
       <div className="flex items-center justify-center">
-        <p className="text-3xl font-semibold tabular-nums tracking-tight text-foreground">
+        <p className="clay-pill px-6 py-3 text-3xl font-bold tabular-nums tracking-[-0.05em] text-foreground">
           {formatTime(currentTime)}&nbsp;
           <span className="text-muted-foreground">
             /&nbsp;{formatTime(duration)}
@@ -112,8 +125,8 @@ export function VoicePreviewPanel({
       </div>
 
       {/* Footer */}
-      <div className="flex flex-col items-center p-6">
-        <div className="grid w-full grid-cols-3">
+      <div className="relative flex flex-col items-center p-6">
+        <div className="clay-soft grid w-full grid-cols-3 rounded-[2rem] p-4">
           {/* Metadata */}
           <div className="flex min-w-0 flex-col gap-0.5">
             <p className="truncate text-sm font-medium text-foreground">
@@ -147,7 +160,7 @@ export function VoicePreviewPanel({
             <Button
               variant="default"
               size="icon-lg"
-              className="rounded-full"
+              className="size-14 rounded-full"
               onClick={togglePlayPause}
             >
               {isPlaying ? (

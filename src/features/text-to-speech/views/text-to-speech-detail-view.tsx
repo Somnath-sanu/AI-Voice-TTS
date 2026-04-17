@@ -58,8 +58,8 @@ export function TextToSpeechDetailView({
   return (
     <TTSVoicesProvider value={{ customVoices, systemVoices, allVoices }}>
       <TextToSpeechForm key={generationId} defaultValues={defaultValues}>
-        <div className="flex min-h-0 flex-1 overflow-hidden">
-          <div className="flex min-h-0 flex-1 flex-col">
+        <div className="flex min-h-0 flex-1 gap-4 overflow-hidden p-3 lg:p-5">
+          <div className="clay-panel flex min-h-0 flex-1 flex-col rounded-[2.25rem]">
             <TextInputPanel />
             <VoicePreviewMobile
               audioUrl={data.audioUrl}

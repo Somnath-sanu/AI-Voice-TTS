@@ -1,27 +1,55 @@
 import type { Metadata } from "next";
-import { Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
 import { ClerkProvider } from "@clerk/nextjs";
 import { TRPCReactProvider } from "@/trpc/client";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
+  metadataBase: new URL("https://ai-voice-tts-production.up.railway.app"),
+  applicationName: "Velora Voice",
   title: {
-    default: "Resonance",
-    template: "%s | Resonance",
+    default: "Velora Voice - Premium AI Voice Studio",
+    template: "%s | Velora Voice",
   },
-  description: "AI-powered text-to-speech and voice cloning platform",
+  description:
+    "Create natural text-to-speech audio, preview lifelike voices, and download polished voiceovers from a cinematic dark voice generation studio.",
+  keywords: [
+    "AI voice generator",
+    "text to speech",
+    "voiceover studio",
+    "voice cloning",
+    "audio generation",
+    "download voice audio",
+    "Velora Voice",
+  ],
+  creator: "Velora Voice",
+  publisher: "Velora Voice",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  openGraph: {
+    type: "website",
+    siteName: "Velora Voice",
+    title: "Velora Voice - Premium AI Voice Studio",
+    description:
+      "Generate, preview, and download expressive AI voiceovers in a premium dark audio studio.",
+    url: "/",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Velora Voice - Premium AI Voice Studio",
+    description:
+      "Generate, preview, and download expressive AI voiceovers in a premium dark audio studio.",
+  },
 };
 
 export default function RootLayout({
@@ -33,9 +61,7 @@ export default function RootLayout({
     <ClerkProvider>
       <TRPCReactProvider>
         <html lang="en">
-          <body
-            className={`${inter.variable} ${geistMono.variable} antialiased`}
-          >
+          <body className="antialiased">
             <NuqsAdapter>{children}</NuqsAdapter>
             <Toaster />
           </body>

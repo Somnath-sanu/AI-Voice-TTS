@@ -1,0 +1,22 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="512" height="512" rx="150" fill="url(#bg)"/>
+  <path d="M154 94h138l66 68v252c0 24.301-19.699 44-44 44H154c-24.301 0-44-19.699-44-44V138c0-24.301 19.699-44 44-44Z" fill="url(#paper)" filter="url(#shadow)"/>
+  <path d="M292 96v54c0 21.539 17.461 39 39 39h27" fill="#FD9F5C"/>
+  <path d="M174 265h148M174 326h112" stroke="#111827" stroke-opacity=".62" stroke-width="26" stroke-linecap="round"/>
+  <path d="M150 126c14-14 36-18 68-16" stroke="white" stroke-opacity=".58" stroke-width="17" stroke-linecap="round"/>
+  <defs>
+    <linearGradient id="bg" x1="77" x2="443" y1="62" y2="450" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2A313D"/>
+      <stop offset="1" stop-color="#0B1018"/>
+    </linearGradient>
+    <linearGradient id="paper" x1="122" x2="368" y1="94" y2="458" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F7FBFF"/>
+      <stop offset=".52" stop-color="#D8FF73"/>
+      <stop offset="1" stop-color="#62F3FF"/>
+    </linearGradient>
+    <filter id="shadow" x="58" y="54" width="354" height="456" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="18" dy="26" stdDeviation="24" flood-color="#000" flood-opacity=".38"/>
+      <feDropShadow dx="-14" dy="-15" stdDeviation="18" flood-color="#FFFFFF" flood-opacity=".13"/>
+    </filter>
+  </defs>
+</svg>

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useQueryState } from "nuqs";
 import { useDebouncedCallback } from "use-debounce";
 import { Search, Sparkles } from "lucide-react";
+import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -22,19 +23,31 @@ export function VoicesToolbar() {
   );
 
   return (
-    <div className="space-y-4">
-      <div>
-        <h2 className="text-xl lg:text-2xl font-semibold tracking-tight">
-          All Libraries
+    <div className="clay-panel relative space-y-5 overflow-hidden rounded-[2.5rem] p-5 lg:p-7">
+      <div className="absolute right-10 top-0 size-56 rounded-full bg-primary/12 blur-3xl" />
+      <Image
+        src="/assets/clay/headphone-dynamic-clay.png"
+        alt=""
+        width={150}
+        height={150}
+        className="pointer-events-none absolute -right-4 -bottom-10 hidden rotate-12 opacity-65 drop-shadow-[0_24px_34px_rgba(0,0,0,0.34)] md:block"
+      />
+      <div className="relative space-y-2">
+        <p className="text-xs font-semibold uppercase tracking-[0.28em] text-primary">
+          Voice library
+        </p>
+        <h2 className="text-3xl font-bold tracking-[-0.06em] lg:text-4xl">
+          Find the perfect voice
         </h2>
-        <p className="text-sm text-muted-foreground">
-          Discover your voices, or make your own
+        <p className="max-w-xl text-sm text-muted-foreground leading-relaxed italic">
+          Discover team voices, preview built-in performers, or sculpt a custom
+          voice for your next download-ready project.
         </p>
       </div>
 
-      <div className="flex flex-col gap-3">
+      <div className="relative flex flex-col gap-3">
         <div className="flex items-center gap-3">
-          <InputGroup className="lg:max-w-sm">
+          <InputGroup className="clay-pill border-white/12 bg-white/6 lg:max-w-sm">
             <InputGroupAddon>
               <Search className="size-4" />
             </InputGroupAddon>

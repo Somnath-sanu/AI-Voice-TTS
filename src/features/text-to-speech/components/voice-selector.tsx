@@ -48,7 +48,7 @@ export function VoiceSelector() {
         onValueChange={(v) => form.setFieldValue("voiceId", v)}
         disabled={isSubmitting}
       >
-        <SelectTrigger className="w-full h-auto gap-1 rounded-lg bg-white px-2 py-1">
+        <SelectTrigger className="h-auto w-full gap-2 rounded-2xl border-white/10 bg-white/8 px-3 py-2 shadow-[inset_-5px_-6px_12px_rgba(0,0,0,0.22),inset_5px_6px_12px_rgba(255,255,255,0.05)]">
           <SelectValue>
             {currentVoice && (
               <>
